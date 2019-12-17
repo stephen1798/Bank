@@ -9,11 +9,11 @@ namespace Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CurrencyController : ControllerBase
+    public class CurrencyAppController : ControllerBase
     {
         private readonly DbCurrencyRepository _dbRepo;
 
-        public CurrencyController()
+        public CurrencyAppController()
         {
             _dbRepo = new DbCurrencyRepository();
         }
@@ -26,12 +26,10 @@ namespace Api.Controllers
 
         // GET api/values/5
         [HttpGet]
-        public ActionResult<NBPResponse> Get([FromQuery]CurrencyRequestModel query)
+        public ActionResult<NBPResponse> Get([FromQuery]string time)
         {
-            var repo = new HttpCurrencyRpository();
-            var resp = repo.GetExchangeRate(query);
-            _dbRepo.SaveCurrencyRate(resp.rates.FirstOrDefault());
-            return resp;
+            var dt = DateTime.Parse(time);
+          return new NBPResponse();
         }
 
         // POST api/values

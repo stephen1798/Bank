@@ -14,7 +14,7 @@ namespace Api.Repository
                 c.price = r.mid;
                 c.rateDateTime = DateTime.Parse( r.effectiveDate);
 
-            _db.CurrencyDbModels.Add(c);
+            _db.CurrencyDb.Add(c);
             _db.SaveChanges();
             
         }
